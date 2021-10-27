@@ -15,11 +15,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="products")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 	
 	@Id
@@ -51,5 +55,4 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private ProductCategory category;
-
 }
