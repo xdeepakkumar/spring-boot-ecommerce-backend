@@ -14,8 +14,10 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import com.ecommerce.entity.Country;
 import com.ecommerce.entity.Product;
 import com.ecommerce.entity.ProductCategory;
+import com.ecommerce.entity.State;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -38,6 +40,14 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		
 		//disable HTTP methods for the product-category: PUT, POST and Delete
 		config.getExposureConfiguration().forDomainType(ProductCategory.class).withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+		
+		//disable HTTP methods for the country: PUT, POST and Delete
+		config.getExposureConfiguration().forDomainType(Country.class).withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+		
+		//disable HTTP methods for the country: PUT, POST and Delete
+		config.getExposureConfiguration().forDomainType(State.class).withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
 		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 		
 		//call a helper method to expose 
